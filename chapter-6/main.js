@@ -1,24 +1,26 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import * as d3 from 'd3';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// const dataset = [ 5, 10, 15, 20, 25 ];
+// const dataset = [ 25, 7, 5, 26, 11 ];
+// const dataset = [25, 7, 5, 26, 11, 8, 25, 14, 23, 19, 14, 11, 22, 29, 11, 13, 12, 17, 18, 10, 24, 18, 25, 9, 3];
+let dataset = [];
+for (let i = 0; i < 25; i++) {
+    let newNumber = Math.floor(Math.random() * 30);
+    dataset.push(newNumber);
+}
+const width = 500;
+const dimensions = {
+    width,
+    height: 50,
+}
 
-setupCounter(document.querySelector('#counter'))
+// d3.select('#app').selectAll('div')
+//     .data(dataset)
+//     .enter()
+//     .append('div')
+//     .classed('bar', true)
+//     .style('height', d => `${d * 5}px`);
+
+const wrapper = d3.select('#app').append('svg')
+    .attr('width', dimensions.width)
+    .attr('height', dimensions.height);
